@@ -6,9 +6,9 @@ from color import rgb_to_hex
 
 just_fix_windows_console()
 
-"""Функция для работы с курсором"""
+"""Function for working with the cursor"""
 def cursorPosition():
-    """Процедура вычисления позиции курсора"""
+    """The procedure for calculating the cursor position"""
     x, y = pyautogui.position() # Получение текущих координат
     positionStr = 'X:' + str(x).rjust(5) + ' Y:' + str(y).rjust(5) # Метод rjust(4) сдвигает строку на четыре позиции вправо
     pixelColor = pyautogui.screenshot().getpixel((x, y)) # Получаем цвет пикселя по координатам курсора

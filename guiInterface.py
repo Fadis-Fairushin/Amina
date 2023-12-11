@@ -28,7 +28,7 @@ def Gui():
 
     commandBtn = tk.Button(commandFrame,
                     width=20,
-                    text="Выполнить",
+                    text="To perform",
                     font=font.Font(family="Arial", size=16),
                     bg="blue",
                     fg="white")

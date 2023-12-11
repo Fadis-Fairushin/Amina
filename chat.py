@@ -8,10 +8,10 @@ def chatClient(IP):
     client.connect((IP, PORT))
     flag = True
     while flag:
-        client.send(input("Я: ").encode("utf-8"))
+        client.send(input("I: ").encode("utf-8"))
         msg = client.recv(1024).decode("utf-8")
         if msg == "quit":
-            print(Fore.GREEN + "[ Выход из чата и окончание работы программы ]")
+            print(Fore.GREEN + "[ Exiting the chat and ending the program ]")
             flag = False
         else:
             print(Fore.CYAN + "_: " + msg)
@@ -20,7 +20,7 @@ def chatClient(IP):
 def chatServer():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     IP = socket.gethostbyname(socket.gethostname())
-    print("Адрес сервера: " + IP)   
+    print("Server address: " + IP)   
     server.bind((IP, PORT))
     server.listen()
     client, address = server.accept()
@@ -28,7 +28,7 @@ def chatServer():
     while flag:
         msg = client.recv(1024).decode("utf-8")
         if msg == "quit":
-            print(Fore.GREEN + "[ Завершение работы сервера и окончание работы программы ]")
+            print(Fore.GREEN + "[ Shutting down the server and ending the program ]")
             flag = False
         else:
             print(Fore.CYAN + "_: " + msg)
