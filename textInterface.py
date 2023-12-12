@@ -7,9 +7,11 @@ from hacker import portScanner
 from utils import cursorPosition
 from chat import chatClient, chatServer
 from guiInterface import Gui
+from games import Games
 
 __dir__ = "User\\"
 __cd__ = ""
+__games__ = "Games\\"
 
 init(autoreset = True)
 
@@ -42,6 +44,7 @@ def scanner(command=""):
         print(Fore.BLUE + "CP" + Fore.WHITE + " - Shows the cursor position and the color of the pixel below it")
         print(Fore.BLUE + "chatServer" + Fore.WHITE + " - Starts the chat server and displays information about the server")
         print(Fore.BLUE + "chatClient" + Fore.WHITE + " - Launches the chat client and connects to the server")
+        print(Fore.BLUE + "games" + Fore.WHITE + " - Turn on the game mode and show the list of available games")
     elif command == "exit":
         print("[ Exit ]")
         exit()
@@ -233,6 +236,10 @@ def scanner(command=""):
             #Gui()
         except Exception:
             pass
+    elif command == "games":
+        g = Games(__games__)
+        g.startGameMode()
+        print("\n[ Hello User! ]")
     else:
         print(Fore.BLUE + "[ The command was not recognized ]")
 
