@@ -119,133 +119,133 @@ def scanner(command=""):
                         text += temp_ + "\n"
         except Exception:
             print(Fore.GREEN + "[ Ошибка ] - Вы не указали имя файла")
-elif command.find("replace") != -1:
-    f_ = command.split(" ")
-    try:
-        f_ins = __dir__ + f_[1]
-        cls_clear(100)
-        print(Fore.GREEN + "[ Если в имени файла был пробел, будет создан новый файл с именем до пробела. Я знаю об этой проблеме, но пока не решил ее. ]")
-        print(Fore.GREEN + "[ Я установил ограничение в 10 000 строк, поэтому при достижении лимита сохраните файл и откройте его снова, иначе возможна потеря данных! ]")
-        print(Fore.GREEN + "[ Чтобы сохранить и выйти, введите \"[save]\" без кавычек на отдельной строке ]")
-        print(Fore.GREEN + "[ Чтобы выйти без сохранения, введите \"[exit]\" без кавычек на отдельной строке ]")
-        cls_clear(3)
-        text = ""
-        for i in range(10000):
-                temp_ = input()
-                if temp_.lower() == "[save]":
-                    d, t = dateAndTime()
-                    with open(f_ins, "w") as f:
-                        f.write(f"Дата: {d} \nВремя: {t} \n{text}")
-                    print(Fore.GREEN + "[ Файл был обновлен ]")
-                    break
-                elif temp_.lower() == "[exit]":
-                    print(Fore.RED + "[ Изменения не сохранены ]")
-                    break
+    elif command.find("replace") != -1:
+        f_ = command.split(" ")
+        try:
+            f_ins = __dir__ + f_[1]
+            cls_clear(100)
+            print(Fore.GREEN + "[ Если в имени файла был пробел, будет создан новый файл с именем до пробела. Я знаю об этой проблеме, но пока не решил ее. ]")
+            print(Fore.GREEN + "[ Я установил ограничение в 10 000 строк, поэтому при достижении лимита сохраните файл и откройте его снова, иначе возможна потеря данных! ]")
+            print(Fore.GREEN + "[ Чтобы сохранить и выйти, введите \"[save]\" без кавычек на отдельной строке ]")
+            print(Fore.GREEN + "[ Чтобы выйти без сохранения, введите \"[exit]\" без кавычек на отдельной строке ]")
+            cls_clear(3)
+            text = ""
+            for i in range(10000):
+                    temp_ = input()
+                    if temp_.lower() == "[save]":
+                        d, t = dateAndTime()
+                        with open(f_ins, "w") as f:
+                            f.write(f"Дата: {d} \nВремя: {t} \n{text}")
+                        print(Fore.GREEN + "[ Файл был обновлен ]")
+                        break
+                    elif temp_.lower() == "[exit]":
+                        print(Fore.RED + "[ Изменения не сохранены ]")
+                        break
+                    else:
+                        text += temp_ + "\n"
+        except Exception:
+            print(Fore.GREEN + "[ Ошибка ] - Вы не указали имя файла")
+    elif ((command.find("rmdir") != -1) or (command.find("rd") != -1)):
+        d = command.split(" ")
+        try:
+            d_ = __dir__ + d[1]
+            os.rmdir(d_)
+            print(Fore.GREEN + "[ Каталог был удален ]")
+        except Exception:
+            print(Fore.GREEN + "[ Ошибка ] - Система не может читать файлы с пробелами в имени")
+            print(Fore.GREEN + "[ Ошибка ] - Или вы не указали имя файла")
+    elif ((command.find("mkdir") != -1) or (command.find("md") != -1)):
+        d = command.split(" ")
+        try:
+            d_ = __dir__ + d[1]
+            os.mkdir(d_)
+            print(Fore.GREEN + "[ Каталог был создан ]")
+        except Exception:
+            print(Fore.GREEN + "[ Ошибка ] - Система не может читать файлы с пробелами в имени")
+            print(Fore.GREEN + "[ Ошибка ] - Или вы не указали имя файла")
+    elif ((command.find("ls") != -1) or (command.find("dir") != -1)):
+        try:
+            rez = sorted(os.listdir(__dir__))
+            for n, item in enumerate(rez):
+                #print(n+1, item)
+                if item.find(".") != -1:
+                    print("Файл:    ", item)
                 else:
-                    text += temp_ + "\n"
-    except Exception:
-        print(Fore.GREEN + "[ Ошибка ] - Вы не указали имя файла")
-elif ((command.find("rmdir") != -1) or (command.find("rd") != -1)):
-    d = command.split(" ")
-    try:
-        d_ = __dir__ + d[1]
-        os.rmdir(d_)
-        print(Fore.GREEN + "[ Каталог был удален ]")
-    except Exception:
-        print(Fore.GREEN + "[ Ошибка ] - Система не может читать файлы с пробелами в имени")
-        print(Fore.GREEN + "[ Ошибка ] - Или вы не указали имя файла")
-elif ((command.find("mkdir") != -1) or (command.find("md") != -1)):
-    d = command.split(" ")
-    try:
-        d_ = __dir__ + d[1]
-        os.mkdir(d_)
-        print(Fore.GREEN + "[ Каталог был создан ]")
-    except Exception:
-        print(Fore.GREEN + "[ Ошибка ] - Система не может читать файлы с пробелами в имени")
-        print(Fore.GREEN + "[ Ошибка ] - Или вы не указали имя файла")
-elif ((command.find("ls") != -1) or (command.find("dir") != -1)):
-    try:
-        rez = sorted(os.listdir(__dir__))
-        for n, item in enumerate(rez):
-            #print(n+1, item)
-            if item.find(".") != -1:
-                print("Файл:    ", item)
-            else:
-                print("Папка: ", Fore.GREEN + item)
-    except Exception:
-        print(Fore.GREEN + "[ Ошибка ] - Такого каталога не существует, перейдите на уровень выше")
-elif command == "cd ..":
-    __dir__ = __dir__.replace(__cd__, "")
-    length = len(__cd__)
-    print(Fore.GREEN + "[ Вы вышли из каталога " + __cd__[:length-1] + "и перешли на уровень выше ]")
-    __cd__ = ""
-elif command == "cd .":
-    __dir__ = "Пользователь\\"
-elif command.find("cd") != -1:
-    try:
-        cd_ = command.split(" ")
-        __cd__ += cd_[1] + "\\"
-        __dir__ += __cd__
-        print(Fore.GREEN + "[ Вы перешли в каталог " + cd_[1] + " ]")
-    except Exception:
-        print(Fore.RED + "Вы не указали каталог!")
-elif command == "datetime":
-    d, t = dateAndTime()
-    print(Fore.CYAN + "Дата: " + d)
-    print(Fore.CYAN + "Время: " + t)
-elif command.find("portscanner") != -1:
-    try:
-        start = datetime.now()
-        ip = command.split(" ")
-        if len(ip) == 3:
-            if (int(ip[2]) > 65535) or (int(ip[2]) <= 0):
-                print(Fore.RED + "Порты указаны вне диапазона")
-            else:
-                for i in range(int(ip[2])):
+                    print("Папка: ", Fore.GREEN + item)
+        except Exception:
+            print(Fore.GREEN + "[ Ошибка ] - Такого каталога не существует, перейдите на уровень выше")
+    elif command == "cd ..":
+        __dir__ = __dir__.replace(__cd__, "")
+        length = len(__cd__)
+        print(Fore.GREEN + "[ Вы вышли из каталога " + __cd__[:length-1] + "и перешли на уровень выше ]")
+        __cd__ = ""
+    elif command == "cd .":
+        __dir__ = "Пользователь\\"
+    elif command.find("cd") != -1:
+        try:
+            cd_ = command.split(" ")
+            __cd__ += cd_[1] + "\\"
+            __dir__ += __cd__
+            print(Fore.GREEN + "[ Вы перешли в каталог " + cd_[1] + " ]")
+        except Exception:
+            print(Fore.RED + "Вы не указали каталог!")
+    elif command == "datetime":
+        d, t = dateAndTime()
+        print(Fore.CYAN + "Дата: " + d)
+        print(Fore.CYAN + "Время: " + t)
+    elif command.find("portscanner") != -1:
+        try:
+            start = datetime.now()
+            ip = command.split(" ")
+            if len(ip) == 3:
+                if (int(ip[2]) > 65535) or (int(ip[2]) <= 0):
+                    print(Fore.RED + "Порты указаны вне диапазона")
+                else:
+                    for i in range(int(ip[2])):
+                        potoc = Thread(target=portScanner, args=(ip[1], i))
+                        potoc.start()
+            elif len(ip) == 2:
+                for i in range(int(65535)):
                     potoc = Thread(target=portScanner, args=(ip[1], i))
                     potoc.start()
-        elif len(ip) == 2:
-            for i in range(int(65535)):
-                potoc = Thread(target=portScanner, args=(ip[1], i))
-                potoc.start()
-        else:
+            else:
+                pass
+            ends = datetime.now()
+            print(Fore.GREEN + "Время : {}".format(ends-start))
+        except Exception:
+            print(Fore.RED + "Вы не ввели IP-адрес!")
+    elif command == "cp":
+        print("Нажмите CTRL-C, чтобы выйти")
+        try:
+            while True:
+                cursorPosition()
+        # Когда пользователь нажимает CTRL-C, возникает исключение KeyboardInterrupt
+        except KeyboardInterrupt:
+            print("\nВыход из программы")
+    elif command == "chatserver":
+        chatServer()
+    elif command.find("chatclient") != -1:
+        try:
+            IP = command.split(" ")
+            chatClient(IP[1])
+        except Exception:
+            print(Fore.RED + "Вы не ввели IP-адрес!")
+    elif command == "gui":
+        try:
             pass
-        ends = datetime.now()
-        print(Fore.GREEN + "Время : {}".format(ends-start))
-    except Exception:
-        print(Fore.RED + "Вы не ввели IP-адрес!")
-elif command == "cp":
-    print("Нажмите CTRL-C, чтобы выйти")
-    try:
-        while True:
-            cursorPosition()
-    # Когда пользователь нажимает CTRL-C, возникает исключение KeyboardInterrupt
-    except KeyboardInterrupt:
-        print("\nВыход из программы")
-elif command == "chatserver":
-    chatServer()
-elif command.find("chatclient") != -1:
-    try:
-        IP = command.split(" ")
-        chatClient(IP[1])
-    except Exception:
-        print(Fore.RED + "Вы не ввели IP-адрес!")
-elif command == "gui":
-    try:
-        pass
-        #Gui()
-    except Exception:
-        pass
-elif command == "games":
-    g = Games(__games__)
-    g.startGameMode()
-    print("\n[ Привет, Пользователь! ]")
-else:
-    print(Fore.BLUE + "[ Команда не распознана ]")
+            #Gui()
+        except Exception:
+            pass
+    elif command == "games":
+        g = Games(__games__)
+        g.startGameMode()
+        print("\n[ Привет, Пользователь! ]")
+    else:
+        print(Fore.BLUE + "[ Команда не распознана ]")
 
 def cls_clear(num):
     for i in range(num):
-    print()
+       print()
 
 def dateAndTime():
     d = datetime.today().strftime("%d.%m.%Y")
