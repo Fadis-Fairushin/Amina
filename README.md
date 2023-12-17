@@ -1,12 +1,12 @@
 # Amina
 
-Amina - a virtual operating system (OS) written in python.
+Amina — виртуальная операционная система (ОС), написанная на Python.
 
 ![](Images/image.png)
 
 ---
 
-To install this program, you need to duplicate this repository to the directory of your choice with the command:
+Чтобы установить эту программу, вам необходимо скопировать этот репозиторий в выбранную вами директорию с помощью команды:
 
 ```git
 git clone https://github.com/Fadis-Fairushin/Amina.git
@@ -14,19 +14,19 @@ git clone https://github.com/Fadis-Fairushin/Amina.git
 
 ---
 
-After that, create a virtual machine inside the installed directory and activate it with the appropriate commands:
+После этого создайте venv внутри установленного каталога и активируйте ее соответствующими командами:
 
 ```python
 python -m venv venv
 ```
 
-For Windows:
+Для Windows:
 
 ```python
 venv\Scripts\activate.bat
 ```
 
-For Linux and MacOS:
+Для Linux и MacOS:
 
 ```python
 source venv/bin/activate
@@ -34,7 +34,7 @@ source venv/bin/activate
 
 ---
 
-Open the console and go to the program directory and enter the following command to install all modules:
+Откройте консоль, перейдите в каталог программы и введите следующую команду для установки всех модулей:
 
 ```python
 pip install -r requirements.txt
@@ -42,10 +42,10 @@ pip install -r requirements.txt
 
 ---
 
-Now you can run the program with the command:
+Теперь вы можете запустить программу командой:
 
 ```python
 python main.py
 ```
 
-Or if you are on Windows, then double-click on the activate.bat file
+Или, если вы используете Windows, дважды щелкните файл active.bat.
