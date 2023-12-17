@@ -21,34 +21,34 @@ def draw_pet(name, happiness, sadness):
     print(Fore.BLUE + " > ^ <" + Fore.RESET)
 
 def play(name, happiness, sadness):
-    print(Fore.YELLOW + f"You are playing with {name}!" + Fore.RESET)
+    print(Fore.YELLOW + f"Вы играете с {name}!" + Fore.RESET)
     # Ваша логика игры с виртуальным питомцем
     happiness += 1
     sadness -= 1
     return happiness, sadness
 
 def feed(name, happiness, sadness):
-    print(Fore.MAGENTA + f"Are you feeding a {name}!" + Fore.RESET)
+    print(Fore.MAGENTA + f"Вы кормите {name}!" + Fore.RESET)
     # Ваша логика кормления виртуального питомца
     happiness += 1
     sadness -= 1
     return happiness, sadness
 
 def sleep(name, happiness, sadness):
-    print(Fore.CYAN + f"The {name} falls asleep..." + Fore.RESET)
+    print(Fore.CYAN + f"{name} засыпает..." + Fore.RESET)
     # Ваша логика сна виртуального питомца
     happiness -= 1
     sadness += 1
     return happiness, sadness
 
 def show_menu(name, happiness, sadness):
-    print("1. " + Fore.GREEN + "Play")
-    print("2. " + Fore.YELLOW + "Feed")
-    print("3. " + Fore.MAGENTA + "Put to sleep")
-    print("4. " + Fore.RED + "Quit")
-    print("Name: {}".format(Fore.GREEN + name + Fore.RESET))  # Окрашиваем имя в зеленый цвет
-    print("Happiness: {}".format(Fore.YELLOW + str(happiness) + Fore.RESET))  # Окрашиваем уровень счастья в желтый цвет
-    print("Sadness: {}".format(Fore.RED + str(sadness) + Fore.RESET))  # Окрашиваем уровень грусти в красный цвет
+    print("1. " + Fore.GREEN + "Играть")
+    print("2. " + Fore.YELLOW + "Кормить")
+    print("3. " + Fore.MAGENTA + "Уложить спать")
+    print("4. " + Fore.RED + "Выход")
+    print("Имя: {}".format(Fore.GREEN + name + Fore.RESET))  # Окрашиваем имя в зеленый цвет
+    print("Счастье: {}".format(Fore.YELLOW + str(happiness) + Fore.RESET))  # Окрашиваем уровень счастья в желтый цвет
+    print("Грусть: {}".format(Fore.RED + str(sadness) + Fore.RESET))  # Окрашиваем уровень грусти в красный цвет
 
 def save_data(name, happiness, sadness):
     # Сохранение данных в файл
@@ -77,7 +77,7 @@ def main():
     pet_name, pet_happiness, pet_sadness = load_data()
 
     if pet_name is None:
-        pet_name = input("Enter a name for your virtual pet: ")
+        pet_name = input("Введите имя для вашего виртуального питомца: ")
     
     is_running = True
 
@@ -86,7 +86,7 @@ def main():
         draw_pet(pet_name, pet_happiness, pet_sadness)
         show_menu(pet_name, pet_happiness, pet_sadness)
 
-        choice = input("Select an action: ")
+        choice = input("Выберите действие: ")
 
         if choice == "1":
             pet_happiness, pet_sadness = play(pet_name, pet_happiness, pet_sadness)
@@ -97,7 +97,7 @@ def main():
         elif choice == "4":
             is_running = False
         else:
-            print("Wrong choice. Try again.")
+            print("Неправильный выбор. Попробуйте еще раз.")
 
         # Ограничение счастья и грусти в диапазоне от 0 до 10
         pet_happiness = max(0, min(pet_happiness, 10))

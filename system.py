@@ -6,6 +6,6 @@ init(autoreset = True)
 def startSystem():
     cls_clear(100)
     print('----------------')
-    print('[ START SYSTEM ]')
+    print('[ ЗАПУСК СИСТЕМЫ ]')
     print('----------------')
-    print(Fore.GREEN + '\n[ The system is ready to work ]')
+    print(Fore.GREEN + '\n[ Система готова к работе ]')

@@ -8,7 +8,7 @@ def portScanner(ip, port):
     sock.settimeout(0.5)
     try:
         connect = sock.connect((ip, port))
-        print(Fore.YELLOW + "Port :" + str(port) + " its open.")
+        print(Fore.YELLOW + "Порт :" + str(port) + " открыт.")
         sock.close()
     except Exception:
         pass

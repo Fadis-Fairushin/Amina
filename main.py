@@ -8,7 +8,7 @@ def App():
             scanner()
     except KeyboardInterrupt:
         print("Ctrl+C")
-        print("\n[ Exit ]")
+        print("\n[ Выход ]")
 
 if __name__ == "__main__":
     App()

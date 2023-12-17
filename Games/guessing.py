@@ -7,26 +7,26 @@ class GuessingGame:
         self.guesses_taken = 0
 
     def play(self):
-        print("Welcome to the Guessing Game!")
-        print("I'm thinking of a number between 1 and 100.")
+        print("Добро пожаловать в игру 'Угадай число'!")
+        print("Я загадал число от 1 до 100.")
 
         while True:
-            guess = input("Take a guess: ")
+            guess = input("Попробуйте угадать: ")
 
             try:
                 guess = int(guess)
             except ValueError:
-                print("Invalid input. Please enter a number.")
+                print("Неверный ввод. Пожалуйста, введите число.")
                 continue
 
             self.guesses_taken += 1
 
             if guess < self.number:
-                print(Fore.BLUE + "Too low!" + Style.RESET_ALL)
+                print(Fore.BLUE + "Слишком мало!" + Style.RESET_ALL)
             elif guess > self.number:
-                print(Fore.RED + "Too high!" + Style.RESET_ALL)
+                print(Fore.RED + "Слишком много!" + Style.RESET_ALL)
             else:
-                print(Fore.GREEN + f"Congratulations! You guessed the number in {self.guesses_taken} tries." + Style.RESET_ALL)
+                print(Fore.GREEN + f"Поздравляю! Вы угадали число за {self.guesses_taken} попыток." + Style.RESET_ALL)
                 break
 
 if __name__ == "__main__":

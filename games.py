@@ -7,23 +7,22 @@ class Games:
 
     def startGameMode(self):
         """
-        Starts the game mode where the user can select and play games.
+        Запускает режим игры, в котором пользователь может выбирать и играть в игры.
         """
         self.run_game_mode()
 
     def run_game_mode(self):
         """
-        Runs the game mode, allowing the user to select games and return to the main menu.
+        Запускает режим игры, позволяя пользователю выбирать игры и возвращаться в главное меню.
         """
         while True:
-            print("\nSelect a game or type 'exit' to return to the main menu:")
+            print("\nВыберите игру или введите 'exit', чтобы вернуться в главное меню:")
             self.menuGames()
-            print("Type the name of the game or 'exit':\n")
+            print("Введите название игры или 'exit':\n")
             game = input("--> ").lower()
 
             if game.lower() == 'exit':
-                print("\n<EXIT GAME MODE>")
-
+                print("\n<ВЫХОД ИЗ РЕЖИМА ИГРЫ>")
                 break
             else:
                 script_path = os.path.dirname(__file__)
@@ -31,7 +30,7 @@ class Games:
 
     def menuGames(self):
         """
-        Prints a list of games available for the user to select.
+        Выводит список доступных игр, из которых пользователь может выбрать.
         """
         files = os.listdir(self.dir_path)
 
@@ -46,15 +45,15 @@ class Games:
 
     def play_game(self, game):
         """
-        Attempts to play the specified game.
+        Пытается запустить указанную игру.
 
-        If the game is found, it will be started. If not, an error message will be displayed.
+        Если игра найдена, она будет запущена. В противном случае будет выведено сообщение об ошибке.
         """
 
         print("\n-----------------------------------------------------------------------------\n")
 
         try:
-            # Running another script
+            # Запуск другого скрипта
             subprocess.run(["python", game])
         except FileNotFoundError:
-            print("\nError: Game not found.\n")
+            print("\nОшибка: Игра не найдена.\n")
